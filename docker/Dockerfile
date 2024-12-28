@@ -45,8 +45,9 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.31.0-rc2/cmake-3.
 
 # Build LuisaRender
 WORKDIR /workspace
-RUN git clone https://github.com/Genesis-Embodied-AI/Genesis.git && \
+RUN git clone https://github.com/chadwick-yao/Genesis.git && \
     cd Genesis && \
+    git checkout local && \
     git submodule update --init --recursive
 COPY build_luisa.sh /workspace/build_luisa.sh
 RUN chmod +x ./build_luisa.sh && ./build_luisa.sh ${PYTHON_VERSION}
@@ -87,9 +88,9 @@ WORKDIR /workspace
 
 # --------------------------- Genesis ----------------------------
 RUN pip install --no-cache-dir open3d
-RUN git clone https://github.com/Genesis-Embodied-AI/Genesis.git && \
+RUN git clone https://github.com/chadwick-yao/Genesis.git && \
     cd Genesis && \
-    pip install . && \
+    pip install -e . && \
     pip install --no-cache-dir PyOpenGL==3.1.5
 
 # ------------------------ Motion planning -----------------------
