@@ -90,7 +90,7 @@ WORKDIR /workspace
 RUN pip install --no-cache-dir open3d
 RUN git clone https://github.com/chadwick-yao/Genesis.git && \
     cd Genesis && \
-    pip install -e . && \
+    pip install . && \
     pip install --no-cache-dir PyOpenGL==3.1.5
 
 # ------------------------ Motion planning -----------------------
